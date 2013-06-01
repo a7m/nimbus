@@ -127,6 +127,8 @@
 - (NITableViewModelSection *)_appendSection {
   if (nil == self.sections) {
     self.sections = [NSMutableArray array];
+  } else if ([self.sections isKindOfClass:[NSArray class]]) {
+    self.sections = self.sections.mutableCopy;
   }
   NITableViewModelSection* section = nil;
   section = [[NITableViewModelSection alloc] init];
@@ -140,6 +142,8 @@
 - (NITableViewModelSection *)_insertSectionAtIndex:(NSUInteger)index {
   if (nil == self.sections) {
     self.sections = [NSMutableArray array];
+  } else if([self.sections isKindOfClass:[NSArray class]]) {
+    self.sections = self.sections.mutableCopy;
   }
   NITableViewModelSection* section = nil;
   section = [[NITableViewModelSection alloc] init];
@@ -148,6 +152,7 @@
   [self.sections insertObject:section atIndex:index];
   return section;
 }
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
